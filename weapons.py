@@ -214,4 +214,11 @@ class WeaponSystem:
             pygame.draw.polygon(surf, (100, 255, 255, 100), pts)
             pygame.draw.polygon(surf, (200, 255, 255, 150), [(x-3, y), (x+3, y), (x+1, 0), (x-1, 0)])
 
+    def switch_weapon(self, weapon_id):
+        """切换武器"""
+        if weapon_id in self.owner.upgrades.available_weapons:
+            self.weapon_type = weapon_id
+            return True
+        return False
+
 from effects import Particle

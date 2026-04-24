@@ -518,48 +518,37 @@ class GameEngine:
         # 标题
         ASSETS.draw_text(self.screen, "操作说明", 48, COLOR_YELLOW, SCREEN_WIDTH//2, 60)
 
-        # 帮助内容分组
+        # 帮助内容分组 - 精简版本，避免超出屏幕
         helps = [
-            ("移动控制", [
-                "WASD / 方向键 : 移动",
+            ("基础操作", [
+                "WASD/方向键 : 移动",
+                "1-5 : 切换武器 | Q : 核弹",
+                "E : 能量炮(30能量) | R : 全屏清怪(60能量)",
+                "B : 商店 | ESC : 暂停",
             ]),
-            ("武器系统", [
-                "自动射击",
-                "1-5 : 切换5种武器",
-                "机关枪 - 快速射击",
-                "散弹枪 - 扇形多发",
-                "激光炮 - 持续穿透",
-                "追踪导弹 - 自动索敌",
-                "等离子球 - 穿透伤害",
+            ("武器说明", [
+                "机关枪 - 快速连射 | 散弹枪 - 扇形散射",
+                "激光炮 - 持续穿透 | 追踪导弹 - 自动索敌",
+                "等离子球 - 穿透多个敌人",
             ]),
-            ("技能系统", [
-                "E : 能量炮 (消耗30能量)",
-                "    前方高伤害穿透光束",
-                "R : 全屏清怪 (消耗60能量)",
-                "    秒杀普通敌人，BOSS掉15%血",
-                "",
+            ("游戏技巧", [
                 "击杀敌人获得能量：普通+2，BOSS+5",
-            ]),
-            ("其他操作", [
-                "Q : 使用核弹",
-                "B : 打开商店",
-                "ESC : 暂停/返回",
-                "空格/回车 : 确认选择",
+                "每10关有BOSS战，击败解锁新武器",
+                "商店可升级：射速、伤害、移速、血量等",
             ]),
         ]
 
-        y = 130
+        y = 100
         for group_title, items in helps:
             # 分组标题
-            ASSETS.draw_text(self.screen, group_title, 22, COLOR_CYAN, SCREEN_WIDTH//2, y)
-            y += 30
+            ASSETS.draw_text(self.screen, group_title, 20, COLOR_CYAN, SCREEN_WIDTH//2, y)
+            y += 28
 
             # 内容
             for item in items:
-                if item:  # 跳过空字符串
-                    ASSETS.draw_text(self.screen, item, 18, COLOR_WHITE, SCREEN_WIDTH//2, y)
-                y += 24
-            y += 10  # 组间距
+                ASSETS.draw_text(self.screen, item, 16, COLOR_WHITE, SCREEN_WIDTH//2, y)
+                y += 22
+            y += 15  # 组间距
 
         # 返回提示
         ASSETS.draw_text(self.screen, "按 ESC 返回主菜单", 20, COLOR_GRAY, SCREEN_WIDTH//2, SCREEN_HEIGHT - 40)
